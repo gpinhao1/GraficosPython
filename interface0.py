@@ -8,14 +8,23 @@ class FTIRApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Graficos FTIR")
+        self.root.iconbitmap(r"C:\Users\Gabriel\Desktop\uerj.ico")
 
-        self.load_button = tk.Button(root, text="Arquivo Excel", command=self.load_file)
-        self.load_button.pack(pady=10)
+        self.frame = tk.Frame(root, width=280, height=200, bg="Black")
+        self.frame.pack(pady=5, expand=True)
 
-        self.plot_button = tk.Button(root, text="Gere o Grafico", command=self.plot_spectrum)
-        self.plot_button.pack(pady=10)
+        self.status_label = tk.Label(self.frame, text="Carregue o Arquivo Primeiro", font=("Times New Roman", 13))
+        self.status_label.pack(pady=5, expand=True)
+
+        self.load_button = tk.Button(root, text="Arquivo Excel", command=self.load_file,font=("Times New Roman", 13))
+        self.load_button.pack(pady=5, expand=True)
+
+
+        self.plot_button = tk.Button(root, text="Gere o Grafico", command=self.plot_spectrum,font=("Times New Roman", 13))
+        self.plot_button.pack(pady=5, expand=True)
 
         self.df = None
+
 
     def load_file(self):
         file_path = filedialog.askopenfilename(filetypes=[("Excel files", "*.xlsx;*.xls")])
@@ -23,8 +32,12 @@ class FTIRApp:
             self.df = pd.read_excel(file_path, header=1, decimal=',')
             print("File loaded successfully!")
             print(self.df.head())
+            aviso = "Arquivo Carregado com Sucesso!"
+            self.status_label.config(text=aviso)
         else:
             print("Erro ao carregar.")
+            aviso = "Erro ao Carregar o Arquivo."
+            self.status_label.config(text=aviso)
 
     def plot_spectrum(self):
         if self.df is not None:
