@@ -3,12 +3,17 @@ from tkinter import filedialog
 import tkinter as tk
 import matplotlib.pyplot as plt
 import pandas as pd
+import os
 
 class FTIRApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Graficos FTIR")
-        self.root.iconbitmap(r"C:\Users\Gabriel\Desktop\uerj.ico")
+
+        if os.path.exists("uerj.ico"):
+            self.root.iconbitmap("uerj.ico")
+        else:
+            pass # Se não achar o ícone, abre sem ele (evita crash)
 
         self.frame = tk.Frame(root, width=280, height=200, bg="Black")
         self.frame.pack(pady=1, expand=True)
