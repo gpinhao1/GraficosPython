@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-diretorio = r"C:\Users\Gabriel\OneDrive\Marcelo\GraficosPython\FTIR\CA CSE BC .xlsx"
+diretorio = r"/home/gp/Área de trabalho/FTIR/GraficosPython/FTIR/CA CSE BC .xlsx"
 
 # --- AQUI ESTÁ A MÁGICA ---
 # header=1: Pega a linha 2 do Excel como título (ignora a linha "Criado com...")
