@@ -7,8 +7,8 @@ df = pd.read_excel(diretorio, engine='openpyxl')
 
 print(df.head())
 
-x = df.iloc[:, 0].values  # Pega todos os dados da coluna 0 (A)
-y = df.iloc[:, 1].values  # Pega todos os dados da coluna 1 (B)
+x = df.iloc[:, 0].values  
+y = df.iloc[:, 1].values  
 
 # 3. Configurar o Gráfico
 plt.figure(figsize=(12, 6)) # Tamanho mais largo, padrão para espectros
@@ -16,7 +16,6 @@ plt.figure(figsize=(12, 6)) # Tamanho mais largo, padrão para espectros
 # Plotar a linha (Geralmente preto ou azul escuro para FTIR)
 plt.plot(df['cm-1'], df['%T'], color='black', linewidth=0.8)
 
-# --- O TRUQUE DO FTIR ---
 # Inverte o eixo X (de 4000 para 400)
 plt.gca().invert_xaxis()
 
